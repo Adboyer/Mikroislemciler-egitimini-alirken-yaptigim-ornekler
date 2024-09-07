@@ -1,0 +1,49 @@
+A51 MACRO ASSEMBLER  DERS2                                                                10/10/2022 14:17:55 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\ders2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE ders2.a51 SET(SMALL) DEBUG PRINT(.\Listings\ders2.lst) OBJECT(.\Objects
+                      \ders2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     Org 00h
+0000 8000              2     sjmp XX1
+                       3     
+0002                   4     XX1:
+0002                   5     mov r0,#FFh;RAM sifirlama
+*** _________________________________^
+*** ERROR #A45 IN 5 (ders2.a51, LINE 5): UNDEFINED SYMBOL (PASS-2)
+0004 7400              6     mov a,#00h
+0006 F6                7     tekrar:mov @r0,a
+0007 D8FD              8     djnz r0,tekrar 
+                       9     
+0009 E590             10     XX2:mov a,p1
+000B 85A000           11     mov 00h,p2
+000E F6               12     mov @r0,a;dolayli adresleme r0 in gösterdigi adrese akümülatörün içerigini yaz
+000F F5B0             13     mov p3,a
+0011 80F6             14     sjmp XX2
+                      15     
+                      16     end
+A51 MACRO ASSEMBLER  DERS2                                                                10/10/2022 14:17:55 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+FFH. . . . . . . .    ----   -----       
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+TEKRAR . . . . . .  C ADDR   0006H   A   
+XX1. . . . . . . .  C ADDR   0002H   A   
+XX2. . . . . . . .  C ADDR   0009H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 1 ERROR(S)

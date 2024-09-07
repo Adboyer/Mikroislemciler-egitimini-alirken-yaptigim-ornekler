@@ -1,0 +1,38 @@
+A51 MACRO ASSEMBLER  DERS2                                                                10/10/2022 15:52:42 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+NO OBJECT MODULE REQUESTED
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE DERS2.a51 SET(SMALL) DEBUG PRINT(.\Listings\DERS2.lst) OBJECT(.\Objects
+                      \DERS2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 757834            2     mov 78h,#34h
+0003 757912            3     mov 79h,#12h
+0006 757AEF            4     mov 7ah,#0efh
+0009 757812            5     mov 78h,#12h
+                       6     
+                       7     mova,78h
+*** _________________________^
+*** ERROR #A9 IN 7 (DERS2.a51, LINE 7): SYNTAX ERROR
+000C 257A              8     add a,7ah
+000E F578              9     mov 78h,a
+                      10     
+*** WARNING #A41 IN 10 (DERS2.a51, LINE 10): MISSING 'END' STATEMENT
+A51 MACRO ASSEMBLER  DERS2                                                                10/10/2022 15:52:42 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+MOVA . . . . . . .    ----   -----       
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  1 WARNING(S), 1 ERROR(S)

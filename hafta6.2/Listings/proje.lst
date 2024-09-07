@@ -1,0 +1,111 @@
+A51 MACRO ASSEMBLER  PROJE                                                                10/31/2022 16:25:14 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\proje.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE proje.a51 SET(SMALL) DEBUG PRINT(.\Listings\proje.lst) OBJECT(.\Objects
+                      \proje.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 00h
+0000 8013              2     sjmp basla
+000B                   3     org 0Bh
+000B 803B              4     sjmp timer1
+0013                   5     org 13h
+0013 801E              6     sjmp kesme1
+0015 758990            7     basla: mov tmod,#10010000b
+0018 903CAF            8     mov dptr,#15535d
+001B 85828B            9     mov tl1,dpl
+001E 85838D           10     mov th1,dph
+0021 D2AA             11     setb ex1
+0023 D28A             12     setb it1
+0025 D2AB             13     setb et1
+0027 D2AF             14     setb ea
+0029 D2BB             15     setb pt1
+002B C2A0             16     clr p2.0
+002D C2A1             17     clr p2.1
+002F D28E             18     setb tr1
+0031 C200             19     clr 00h
+0033 85828B           20     kesme1:mov tl1,dpl
+0036 85838D           21     mov th1,dph
+0039 300007           22     jnb 00h,uygun
+003C C200             23     clr 00h
+003E D2A1             24     setb p2.1
+0040 C2A1             25     clr p2.1
+0042 32               26     reti
+0043 D2A0             27     uygun:setb p2.0
+0045 C2A0             28     clr p2.0
+0047 32               29     reti
+0048 D200             30     timer1:setb 00h
+004A 32               31     reti
+                      32     end
+                             
+                             
+                             
+                             
+                             
+                             
+                             ;org 00h
+                             ;sjmp basla
+                             ;org 13h
+                             ;sjmp kesme1
+                             ;basla: mov tmod,#10010000b ;harici start\top timer1;16 bit timer ayari
+                             ;mov tl1,#00h
+                             ;mov th1,#00h
+                             ;setb ex1
+                             ;setb ea
+                             ;clr p2.0
+                             ;clr p2.1
+                             ;setb tr1
+                             ;mov dptr,#50000d ;50 ms degeri
+                             ;mov 40h,dpl
+                             ;mov 41h,dph
+                             ;x:sjmp x
+                             ;kesme1 : mov 42h,tl1
+                             ;mov a,th1
+                             ;mov tl1,#00h
+A51 MACRO ASSEMBLER  PROJE                                                                10/31/2022 16:25:14 PAGE     2
+
+                             ;mov th1,#00h
+                             ;cjne a,41h,x1
+                             ;mov a,42h
+                             ;cjne a,42h,x1
+                             ;uygun:setb p2.0
+                             ;clr p2.0
+                             ;reti
+                             ;x1: jc uygun
+                             ;hata:setb p2.1
+                             ;clr p2.1
+                             ;reti 
+                             ;end
+A51 MACRO ASSEMBLER  PROJE                                                                10/31/2022 16:25:14 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BASLA. . . . . . .  C ADDR   0015H   A   
+DPH. . . . . . . .  D ADDR   0083H   A   
+DPL. . . . . . . .  D ADDR   0082H   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+ET1. . . . . . . .  B ADDR   00A8H.3 A   
+EX1. . . . . . . .  B ADDR   00A8H.2 A   
+IT1. . . . . . . .  B ADDR   0088H.2 A   
+KESME1 . . . . . .  C ADDR   0033H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+PT1. . . . . . . .  B ADDR   00B8H.3 A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TIMER1 . . . . . .  C ADDR   0048H   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+UYGUN. . . . . . .  C ADDR   0043H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

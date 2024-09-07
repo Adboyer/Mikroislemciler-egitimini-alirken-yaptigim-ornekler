@@ -1,0 +1,59 @@
+C51 COMPILER V9.60.0.0   4BUTTON                                                           12/26/2022 14:42:43 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE 4BUTTON
+OBJECT MODULE PLACED IN .\Objects\4button.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE 4button.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\4
+                    -button.lst) TABS(2) OBJECT(.\Objects\4button.obj)
+
+line level    source
+
+   1          //her hangi bir buttona basildiginda ledlerin durumunu degistirin
+   2          #include<reg51.h>
+   3          
+   4          sbit BUTTON0=P2^0;
+   5          sbit BUTTON1=P2^1;
+   6          sbit BUTTON2=P2^2;
+   7          sbit BUTTON3=P2^3;
+   8          
+   9          unsigned char getNumButtons()
+  10          {
+  11   1        unsigned char result=0;
+  12   1        if(!BUTTON0)
+  13   1          result++;
+  14   1        if(!BUTTON1)
+  15   1          result++;
+  16   1        if(!BUTTON2)
+  17   1          result++;
+  18   1        if(!BUTTON3)
+  19   1          result++;
+  20   1        return result;
+  21   1      }
+  22          void main ()
+  23          {
+  24   1        unsigned char lights=0xFF;
+  25   1        P0=lights;
+  26   1        while(1)
+  27   1        {
+  28   2          if(getNumButtons()>0)
+  29   2          {
+  30   3            while(getNumButtons() !=0);
+  31   3            lights=~lights;
+  32   3            P0=lights;
+  33   3          }
+  34   2        }
+  35   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     49    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,109 @@
+C51 COMPILER V9.60.0.0   11HAFTA2                                                          12/14/2022 15:31:01 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE 11HAFTA2
+OBJECT MODULE PLACED IN .\Objects\11hafta2.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE 11hafta2.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\
+                    -11hafta2.lst) TABS(2) OBJECT(.\Objects\11hafta2.obj)
+
+line level    source
+
+   1          #include<REGX51.H>
+   2          
+   3          void cct_init(void);
+   4          void SerialInitilaze(void);
+   5          void uart_msg(unsigned char *c);
+   6          void uart_tx(unsigned char);
+   7          sbit led1=P1^0;
+   8          sbit led2=P1^1;
+   9          sbit led3=P1^2;
+  10          sbit led4=P1^3;
+  11          
+  12          
+  13          
+  14          void main()
+  15          {
+  16   1        cct_init();
+  17   1        SerialInitilaze();
+  18   1        EA=1;
+  19   1        ES=1;
+  20   1        uart_msg("Initializing Serial Communication");
+  21   1        uart_tx(0x0d);
+  22   1        uart_msg("1,2,3,4 girilince led ve a,b,c,dd kapanip açilicak");
+  23   1        uart_tx(0x0d);
+  24   1        uart_msg("ledi yakmak için karakter giriniz");
+  25   1        uart_tx(0x0d);
+  26   1        while(1);
+  27   1      }
+  28          
+  29          void cct_init(void)
+  30          {
+  31   1        P0=0x00; //portlari kapat
+  32   1        P1=0x00;
+  33   1        P2=0x00;
+  34   1        P3=0x03;
+  35   1      }
+  36          
+  37          
+  38          void SerialInitilaze(void)
+  39          {
+  40   1        TMOD=0x20; //mod 1 mi 2 mi 
+  41   1        SCON=0x50; //serial mode 1 , 8-data
+  42   1        TH1=0xFD; //boud rate 9600
+  43   1        TR1=1; //timer baslat
+  44   1      }
+  45          
+  46          void uart_msg(unsigned char *c)
+  47          {
+  48   1          while (*c !=0){ uart_tx(*c++);}
+  49   1      //  while(*c !=0)
+  50   1      //  {
+  51   1      //  uart_tx(*c++);
+  52   1      //  }
+  53   1      }
+  54            
+C51 COMPILER V9.60.0.0   11HAFTA2                                                          12/14/2022 15:31:01 PAGE 2   
+
+  55          void uart_tx(unsigned char serialdata)
+  56          {
+  57   1        SBUF=serialdata;
+  58   1        while(TI==0);
+  59   1        TI=0;
+  60   1      }
+  61          void serial_ISR(void) interrupt 4
+  62          {
+  63   1        char chr;
+  64   1        if(RI==1)
+  65   1        {
+  66   2          chr=SBUF;
+  67   2          RI=0;
+  68   2        }
+  69   1        P0=~P0;
+  70   1        switch(chr)
+  71   1        {   
+  72   2          case '1': led1=1;uart_msg("1st on"); uart_tx(0x0d); break;
+  73   2          case '2': led2=1;uart_msg("2nd on"); uart_tx(0x0d); break;
+  74   2          case '3': led3=1;uart_msg("3rd on"); uart_tx(0x0d); break;
+  75   2          case '4': led4=1;uart_msg("4th on"); uart_tx(0x0d); break;
+  76   2          case 'a': led1=0;uart_msg("1st off"); uart_tx(0x0d); break;
+  77   2          case 'b': led2=0;uart_msg("2nd off"); uart_tx(0x0d); break;
+  78   2          case 'c': led3=0;uart_msg("3rd off"); uart_tx(0x0d); break;
+  79   2          case 'd': led4=0;uart_msg("4th off"); uart_tx(0x0d); break;
+  80   2        default: ; break;
+  81   2        }
+  82   1        RI=0;
+  83   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    306    ----
+   CONSTANT SIZE    =    179    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

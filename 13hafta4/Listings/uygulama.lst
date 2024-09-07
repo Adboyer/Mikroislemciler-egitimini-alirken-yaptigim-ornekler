@@ -1,0 +1,51 @@
+C51 COMPILER V9.60.0.0   UYGULAMA                                                          12/26/2022 15:38:34 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE UYGULAMA
+OBJECT MODULE PLACED IN .\Objects\uygulama.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE uygulama.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\
+                    -uygulama.lst) TABS(2) OBJECT(.\Objects\uygulama.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          sbit BUTTON0=P1^0;
+   3          
+   4          const unsigned int DEBOUNCE=6600;
+   5          bit getButton0()
+   6          {
+   7   1        unsigned int i=0;
+   8   1        if(!BUTTON0)
+   9   1        {
+  10   2          while(!BUTTON0)
+  11   2          i++;
+  12   2          if(i<DEBOUNCE)
+  13   2          return 0;
+  14   2          return 1;
+  15   2            
+  16   2        }
+  17   1        return 0;
+  18   1      }
+  19          void main()
+  20          {
+  21   1        unsigned char count =1;
+  22   1        while(1)
+  23   1          P0=~count;
+  24   1        if(getButton0())
+  25   1          count++;
+  26   1      }
+*** WARNING C294 IN LINE 24 OF uygulama.c: unreachable code
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     39    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

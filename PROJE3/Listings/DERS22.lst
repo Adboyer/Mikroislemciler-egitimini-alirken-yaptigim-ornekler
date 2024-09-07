@@ -1,0 +1,35 @@
+A51 MACRO ASSEMBLER  DERS22                                                               10/10/2022 14:41:56 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+NO OBJECT MODULE REQUESTED
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE DERS22.a51 SET(SMALL) DEBUG PRINT(.\Listings\DERS22.lst) OBJECT(.\Objec
+                      ts\DERS22.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 00h
+0000 74FF              2     mov a,#0FFh
+0002                   3     XX1:
+0002 F590              4     mov p1,a
+0004                   5     djnz a,XX1
+*** ______________________________^
+*** ERROR #A40 IN 5 (DERS22.a51, LINE 5): INVALID REGISTER
+                       6     end
+                             
+A51 MACRO ASSEMBLER  DERS22                                                               10/10/2022 14:41:56 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+P1 . . . . . . . .  D ADDR   0090H   A   
+XX1. . . . . . . .  C ADDR   0002H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 1 ERROR(S)

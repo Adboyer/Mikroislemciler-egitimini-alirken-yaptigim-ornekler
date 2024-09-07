@@ -1,0 +1,53 @@
+A51 MACRO ASSEMBLER  PROJEE                                                               10/31/2022 15:59:32 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\projee.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE projee.a51 SET(SMALL) DEBUG PRINT(.\Listings\projee.lst) OBJECT(.\Objec
+                      ts\projee.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 00h
+0000 800B              2     sjmp basla
+000B                   3     org 0Bh
+000B 8013              4     sjmp timer0
+000D 758901            5     basla: mov tmod, #00000001b ; 16bit, zamanlayici0 ayari
+0010 90FFFA            6     mov dptr,#65530d;65535-1000
+0013 85838C            7     mov th0,dph
+0016 85828A            8     mov tl0,dpl
+0019 75A882            9     mov ie,#130d
+                      10     ;setb et0
+                      11     ;setb ea
+001C D28C             12     setb tr0
+001E 80FE             13     x: sjmp x
+0020 B2A0             14     timer0:cpl p2.0
+0022 85828A           15     mov tl0,dpl
+0025 85838C           16     mov th0,dph
+0028 32               17     reti;
+                      18     end
+A51 MACRO ASSEMBLER  PROJEE                                                               10/31/2022 15:59:32 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BASLA. . . . . . .  C ADDR   000DH   A   
+DPH. . . . . . . .  D ADDR   0083H   A   
+DPL. . . . . . . .  D ADDR   0082H   A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TIMER0 . . . . . .  C ADDR   0020H   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+X. . . . . . . . .  C ADDR   001EH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

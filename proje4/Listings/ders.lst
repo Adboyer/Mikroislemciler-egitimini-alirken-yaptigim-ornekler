@@ -1,0 +1,35 @@
+A51 MACRO ASSEMBLER  DERS                                                                 10/10/2022 14:56:32 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\ders.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE ders.a51 SET(SMALL) DEBUG PRINT(.\Listings\ders.lst) OBJECT(.\Objects\d
+                      ers.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0008                   1     Org 08h
+0008 90000E            2     mov DPTR,#sayigoster
+000B 93                3     movc a,@a + DPTR
+000C F590              4     MOV p1,a
+000E 3F0B0504          5     sayigoster: DB 3FH,0BH,05H,04H,6BH,6DH,7DH,07H,7FH,6FH,77H,7CH,39H,5EH,79H,71H
+0012 6B6D7D07                
+0016 7F6F777C                
+001A 395E7971                
+*** WARNING #A41 IN 5 (ders.a51, LINE 5): MISSING 'END' STATEMENT
+A51 MACRO ASSEMBLER  DERS                                                                 10/10/2022 14:56:32 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+P1 . . . . . . . .  D ADDR   0090H   A   
+SAYIGOSTER . . . .  C ADDR   000EH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  1 WARNING(S), 0 ERROR(S)

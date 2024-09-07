@@ -1,0 +1,50 @@
+C51 COMPILER V9.60.0.0   UYGULAMA                                                          12/26/2022 15:33:08 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE UYGULAMA
+OBJECT MODULE PLACED IN .\Objects\uygulama.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE uygulama.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\
+                    -uygulama.lst) TABS(2) OBJECT(.\Objects\uygulama.obj)
+
+line level    source
+
+   1          //p1 in tiklanmasini p0 da sayma
+   2          #include<reg52.h>
+   3          sbit BUTTON0=P1^0;
+   4          sbit BUTTON1=P1^1;
+   5          sbit BUTTON2=P1^2;
+   6          sbit BUTTON3=P1^3;
+   7          
+   8          bit getButton0()
+   9          {
+  10   1        if(!BUTTON0)
+  11   1        {
+  12   2          while(!BUTTON0);
+  13   2          return 1;
+  14   2        }
+  15   1        return 0;
+  16   1      }
+  17          void main()
+  18          {
+  19   1        unsigned char count =1;
+  20   1        while(1)
+  21   1        {
+  22   2          P0=~count;
+  23   2          if(getButton0())
+  24   2            count++;
+  25   2        }
+  26   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     24    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

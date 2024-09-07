@@ -1,0 +1,10 @@
+org 00h
+sjmp start
+start:mov DPTR,#Tablo
+Mov A,#0FFH
+mov p1,a
+dongu:mov a,p1
+movc a,@a+DPTR
+mov p3,a
+sjmp dongu
+Tablo:DB 0,1,4,9,16,25,36,49,64,81

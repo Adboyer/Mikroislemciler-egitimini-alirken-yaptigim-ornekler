@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\uygulama.obj" 
+TO ".\Objects\uygulama" 
+PRINT(".\Listings\uygulama.m51")

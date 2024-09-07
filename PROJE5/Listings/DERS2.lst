@@ -1,0 +1,42 @@
+A51 MACRO ASSEMBLER  DERS2                                                                10/10/2022 15:02:44 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\DERS2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE DERS2.a51 SET(SMALL) DEBUG PRINT(.\Listings\DERS2.lst) OBJECT(.\Objects
+                      \DERS2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 00h
+0000 8000              2     sjmp start
+0002 900010            3     start:mov DPTR,#Tablo
+0005 74FF              4     Mov A,#0FFH
+0007 F590              5     mov p1,a
+0009 E590              6     dongu:mov a,p1
+000B 93                7     movc a,@a+DPTR
+000C F5B0              8     mov p3,a
+000E 80F9              9     sjmp dongu
+0010 00010409         10     Tablo:DB 0,1,4,9,16,25,36,49,64,81
+0014 10192431                
+0018 4051                    
+*** WARNING #A41 IN 10 (DERS2.a51, LINE 10): MISSING 'END' STATEMENT
+A51 MACRO ASSEMBLER  DERS2                                                                10/10/2022 15:02:44 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DONGU. . . . . . .  C ADDR   0009H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+START. . . . . . .  C ADDR   0002H   A   
+TABLO. . . . . . .  C ADDR   0010H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  1 WARNING(S), 0 ERROR(S)
